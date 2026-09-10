@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viruman Silambam School - Empowering mind and body through ancient Tamil martial arts in Bodinayakkanur.">
+  <title>Viruman Silambam | விருமன் சிலம்பம்</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fef2f2',
+              100: '#fee2e2',
+              200: '#fecaca',
+              300: '#fca5a5',
+              400: '#f87171',
+              500: '#ef4444',
+              600: '#FF0000', // Core Primary Red
+              700: '#dc2626',
+              800: '#b91c1c',
+              900: '#991b1b'
+            },
+            bgLight: '#F5F5F5'
+          },
+          fontFamily: {
+            heading: ['"Mukta Malar"', 'Poppins', 'sans-serif'],
+            body: ['"Noto Sans Tamil"', 'Inter', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 20px 60px rgba(255, 0, 0, 0.08)',
+            card: '0 10px 35px rgba(15, 23, 42, 0.06)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Tamil', 'Inter', sans-serif; background: #F5F5F5; color: #0f172a; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Mukta Malar', 'Poppins', sans-serif; }
+
+    .page { display: none; animation: fadeIn 0.35s ease; }
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #991b1b, #FF0000, #f87171);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    .hero-grid {
+      background-image: linear-gradient(rgba(255,0,0,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,0,.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .floating { animation: floating 4s ease-in-out infinite; }
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .nav-link.active { color: #FF0000; }
+    .nav-link.active::after {
+      content: ''; display: block; width: 22px; height: 2px;
+      background: #FF0000; margin: 5px auto 0; border-radius: 999px;
+    }
+    .mobile-nav-link.active { background: #fef2f2; color: #FF0000; }
+
+    .pricing-card, .service-card { transition: all .3s ease; }
+    .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(255,0,0,.15); }
+    .service-card:hover { transform: translateY(-5px); border-color: #fca5a5; }
+
+    .featured-pricing { border: 2px solid #FF0000; transform: translateY(-8px); }
+    .featured-pricing:hover { transform: translateY(-12px); }
+
+    .check { color: #FF0000; flex-shrink: 0; }
+    .lang-switch { cursor: pointer; user-select: none; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="h-20 flex items-center justify-between">
+
+        <button>
+          
+           <button onclick="showPage('home')" class="flex items-center gap-3 text-left">
+
+          <img src="Images/Company Logo.png"
+              alt="Branvelope - Digital Growth Agency"
+              class="w-56 h-auto">
+
+        </button>
+        </button>
+
+        <nav class="hidden lg:flex items-center gap-8">
+          <button class="nav-link active text-sm font-semibold text-slate-600 hover:text-brand-600 transition" data-page="home" onclick="showPage('home')" data-i18n="nav.home">முகப்பு</button>
+          <button class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition" data-page="services" onclick="showPage('services')" data-i18n="nav.classes">பிரிவுகள்</button>
+          <button class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition" data-page="about" onclick="showPage('about')" data-i18n="nav.about">எங்களைப் பற்றி</button>
+          <button class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition" data-page="pricing" onclick="showPage('pricing')" data-i18n="nav.pricing">கட்டணம்</button>
+          <button class="nav-link text-sm font-semibold text-slate-600 hover:text-brand-600 transition" data-page="contact" onclick="showPage('contact')" data-i18n="nav.contact">தொடர்பு</button>
+        </nav>
+
+        <div class="hidden lg:flex items-center gap-4">
+          <button onclick="toggleLanguage()" class="lang-switch bg-slate-50 hover:bg-slate-100 text-slate-800 font-bold py-2 px-4 rounded-full border border-slate-200 flex items-center gap-2 transition-colors text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+            <span id="lang-text-desktop">English</span>
+          </button>
+          <button onclick="showPage('contact')" class="px-5 py-2.5 rounded-xl bg-brand-600 text-white font-semibold text-sm hover:bg-brand-700 transition shadow-lg shadow-red-200" data-i18n="nav.cta">
+            இலவச வகுப்புக்கு பதிவு செய்க
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 lg:hidden">
+          <button onclick="toggleLanguage()" class="lang-switch bg-slate-50 text-sm text-slate-800 font-bold py-1.5 px-3 rounded-full border border-slate-200 flex items-center gap-1">
+            <span id="lang-text-mobile">EN</span>
+          </button>
+          <button id="mobileMenuBtn" class="p-2 rounded-lg hover:bg-slate-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="space-y-1">
+          <button class="mobile-nav-link active w-full text-left px-4 py-3 rounded-lg font-semibold" data-page="home" onclick="showPage('home'); closeMobileMenu()" data-i18n="nav.home">முகப்பு</button>
+          <button class="mobile-nav-link w-full text-left px-4 py-3 rounded-lg font-semibold text-slate-600" data-page="services" onclick="showPage('services'); closeMobileMenu()" data-i18n="nav.classes">பிரிவுகள்</button>
+          <button class="mobile-nav-link w-full text-left px-4 py-3 rounded-lg font-semibold text-slate-600" data-page="about" onclick="showPage('about'); closeMobileMenu()" data-i18n="nav.about">எங்களைப் பற்றி</button>
+          <button class="mobile-nav-link w-full text-left px-4 py-3 rounded-lg font-semibold text-slate-600" data-page="pricing" onclick="showPage('pricing'); closeMobileMenu()" data-i18n="nav.pricing">கட்டணம்</button>
+          <button class="mobile-nav-link w-full text-left px-4 py-3 rounded-lg font-semibold text-slate-600" data-page="contact" onclick="showPage('contact'); closeMobileMenu()" data-i18n="nav.contact">தொடர்பு</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20">
+
+    <!-- ==================== HOME PAGE ==================== -->
+    <section id="homePage" class="page active">
+
+      <!-- Hero -->
+      <section class="relative overflow-hidden hero-grid bg-brand-50/30">
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-red-300/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-orange-300/15 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 py-20 lg:py-28 relative">
+          <div class="grid lg:grid-cols-2 gap-14 items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-red-100 shadow-sm mb-7">
+                <span class="text-xl"></span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-600" data-i18n="hero.badge">விருமன் சிலம்பம் உங்களை வரவேற்கிறது</span>
+              </div>
+
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight" data-i18n="hero.title">
+                பாரம்பரிய தமிழர் சிலம்பக் கலையை கற்றுத்தரும் <span class="gradient-text">சிறந்த பயிற்சி மையம்</span>
+              </h1>
+
+              <p class="mt-6 text-base sm:text-lg text-slate-600 leading-8 max-w-2xl" data-i18n="hero.subtitle">
+                Empowering mind and body through ancient Tamil martial arts. Join Bodinayakkanur's top-rated martial arts academy.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-4 mt-9">
+                <button onclick="showPage('contact')" class="px-7 py-4 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition shadow-xl shadow-red-200" data-i18n="hero.cta1">
+                  இப்போதே அழைக்கவும்
+                </button>
+                <button onclick="showPage('contact')" class="px-7 py-4 rounded-xl bg-white text-brand-700 border border-brand-200 font-bold hover:bg-brand-50 transition" data-i18n="hero.cta2">
+                  இலவச வகுப்புக்கு பதிவு செய்க
+                </button>
+              </div>
+
+              <div class="grid grid-cols-3 gap-5 mt-12 max-w-lg">
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 counter" data-target="10">0</div>
+                  <div class="text-xs sm:text-sm text-slate-500 mt-1" data-i18n="stats.s1">வருட அனுபவம்</div>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 counter" data-target="500">0</div>
+                  <div class="text-xs sm:text-sm text-slate-500 mt-1" data-i18n="stats.s2">மாணவர்கள்</div>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 counter" data-target="3">0</div>
+                  <div class="text-xs sm:text-sm text-slate-500 mt-1" data-i18n="stats.s3">ஹாட்ரிக் வெற்றிகள்</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Martial Arts Dashboard -->
+            <div class="relative floating">
+              <div class="absolute -top-5 -right-5 w-24 h-24 rounded-3xl bg-red-200/50 blur-2xl"></div>
+              <div class="bg-white rounded-3xl shadow-soft border border-red-100 p-5 sm:p-7 relative overflow-hidden">
+                <img src="Images/Home Image.jpeg" alt="Silambam Martial Arts" class="w-full h-48 object-cover rounded-2xl mb-6" onerror="this.src='Images/Silambam Image.jpeg'">
+                <div class="flex items-center justify-between mb-4">
+                  <div>
+                    <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider" data-i18n="trust.rating.title">5.0 / 5 Star Rating</div>
+                    <div class="text-xl font-bold mt-1" data-i18n="trust.certified.title">Certified Masters</div>
+                  </div>
+                  <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="rounded-2xl bg-red-50 p-3 text-center">
+                    <div class="text-2xl mb-1">🛡️</div>
+                    <div class="text-xs font-bold text-slate-700" data-i18n="trust.female.title">Female Trainers</div>
+                  </div>
+                  <div class="rounded-2xl bg-orange-50 p-3 text-center">
+                    <div class="text-2xl mb-1">👨‍👩‍👧‍👦</div>
+                    <div class="text-xs font-bold text-slate-700" data-i18n="trust.ages.title">All Ages Welcome</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preview About -->
+      <section class="py-20 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <span class="text-brand-600 font-bold text-sm uppercase tracking-[.18em]" data-i18n="about_teaser.tag">எங்களைப் பற்றி சுருக்கமாக</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 leading-tight" data-i18n="about_teaser.quote">
+              "உடல் தகுதி, ஒழுக்கம், <span class="gradient-text">நம்பிக்கை மற்றும் கவனம்"</span>
+            </h2>
+          </div>
+          <div class="text-slate-600 leading-8">
+            <p data-i18n="about_teaser.desc">
+              விருமன் சிலம்பம் என்பது பாரம்பரிய தமிழர் சிலம்பக் கலையை தொழில்முறை முறையில் கற்றுத்தரும் சிறந்த பயிற்சி மையமாகும். இங்கு குழந்தைகள், மாணவர்கள் மற்றும் பெரியவர்கள் அனைவருக்கும் தற்காப்பு கலை பயிற்சி வழங்கப்படுகிறது.
+            </p>
+            <button onclick="showPage('about')" class="mt-7 text-brand-600 font-bold hover:text-brand-800 transition flex items-center gap-2">
+              <span data-i18n="about_teaser.btn">முழு கதையையும் படிக்க</span> →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Static Top Services Preview -->
+      <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto">
+            <span class="text-brand-600 font-bold text-sm uppercase tracking-[.18em]" data-i18n="catalog.title">எங்கள் பயிற்சிப் பிரிவுகள்</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mt-3" data-i18n="catalog.sub">Discover our diverse range of traditional martial arts disciplines</h2>
+          </div>
+
+          <!-- Hardcoded Top 3 Classes -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            
+            <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+              <div class="h-48 overflow-hidden bg-red-50 relative">
+                <img src="Images/Silambam Image.jpeg" alt="Silambam" class="w-full h-full object-cover">
+                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                  🔥 <span data-i18n="disc.s1.name">சிலம்பம்</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s1.name">சிலம்பம்</h3>
+                <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s1.desc">அனைத்து தற்காப்பு கலைகளின் தாய். அடிப்படை காலடி முறைகளை கற்றுக்கொள்ளுங்கள்.</p>
+                <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                  <button onclick="bookService('silambam')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+              <div class="h-48 overflow-hidden bg-red-50 relative">
+                <img src="Images/Surlval Image.jpeg" alt="Surul Val" class="w-full h-full object-cover">
+                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                  ⚔️ <span data-i18n="disc.s2.name">சுருள் வாள்</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s2.name">சுருள் வாள்</h3>
+                <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s2.desc">உயர்ந்த கவனம் மற்றும் சுறுசுறுப்பை உருவாக்கும் நெகிழ்வான உலோக பிளேடு பயிற்சி.</p>
+                <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                  <button onclick="bookService('surul')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+              <div class="h-48 overflow-hidden bg-red-50 relative">
+                <img src="Images/Velkambu Image.jpeg" alt="Vel Kambu" class="w-full h-full object-cover">
+                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                  🗡️ <span data-i18n="disc.s3.name">வேல் கம்பு & வாள்</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s3.name">வேல் கம்பு & வாள்</h3>
+                <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s3.desc">உடல் வலிமை மற்றும் போர் யுக்திகளை வளர்ப்பதற்கான பாரம்பரிய ஆயுதப் பயிற்சி.</p>
+                <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                  <button onclick="bookService('sword')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="text-center mt-10">
+            <button onclick="showPage('services')" class="px-6 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition" data-i18n="catalog.viewAll">
+              View All Classes
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="py-20 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+          <div class="max-w-3xl">
+            <span class="text-brand-600 font-bold text-sm uppercase tracking-[.18em]" data-i18n="benefits.sub">Benefits of Joining</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mt-3" data-i18n="benefits.title">ஏன் எங்களைத் தேர்ந்தெடுக்க வேண்டும்?</h2>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+            <div class="p-6 rounded-2xl bg-red-50 border border-red-100">
+              <div class="text-3xl mb-4">💪</div>
+              <h3 class="font-bold text-lg" data-i18n="benefits.b1.title">Physical Health</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-6" data-i18n="benefits.b1.desc">Improves cardiovascular health, flexibility, muscle tone, and overall core strength.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="text-3xl mb-4">🧠</div>
+              <h3 class="font-bold text-lg" data-i18n="benefits.b2.title">Mental Discipline</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-6" data-i18n="benefits.b2.desc">Enhances concentration levels, making it ideal for school and college students.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="text-3xl mb-4">🛡️</div>
+              <h3 class="font-bold text-lg" data-i18n="benefits.b3.title">Self-Defense</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-6" data-i18n="benefits.b3.desc">Equips individuals with real-world protective skills to handle unexpected threats.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <div class="text-3xl mb-4">🏛️</div>
+              <h3 class="font-bold text-lg" data-i18n="benefits.b4.title">Cultural Heritage</h3>
+              <p class="text-sm text-slate-600 mt-2 leading-6" data-i18n="benefits.b4.desc">Connects the younger generation deeply to traditional Tamil roots.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Achievements -->
+<section class="py-20 bg-slate-950 text-white relative overflow-hidden">
+  
+  <!-- UPDATED BACKGROUND IMAGE LINE -->
+  <div class="absolute inset-0 bg-[url('Images/Home%20Image.jpeg')] opacity-20 bg-cover bg-center"></div>
+  
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 relative z-10 text-center">
+    <span class="text-brand-400 font-bold text-sm uppercase tracking-[.18em]" data-i18n="achievements.title">பெருமைமிகு சாதனைகள்</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 mb-8 italic text-white/90" data-i18n="achievements.quote">
+      “Historic Hat-Trick Win! போடி விருமன் சிலம்பம் பயிற்சி பள்ளி மாணவர்களின் தொடர் வெற்றிகள்...”
+    </h2>
+    <div class="flex justify-center gap-4 flex-wrap mb-10">
+      <img src="Images/Achivement 1.jpeg" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-2xl border-4 border-slate-800 shadow-xl" onerror="this.src='https://images.unsplash.com/photo-1565152862800-410a76ec1110?auto=format&fit=crop&w=300&q=80'">
+      <img src="Images/Achivement 2.jpeg" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-2xl border-4 border-slate-800 shadow-xl" onerror="this.src='https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=300&q=80'">
+      <img src="Images/Achivement 3.jpeg" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-2xl border-4 border-slate-800 shadow-xl" onerror="this.src='https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=300&q=80'">
+    </div>
+    <button onclick="showPage('about')" class="px-8 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition" data-i18n="achievements.btn">
+      View Full Gallery
+    </button>
+  </div>
+</section>
+
+    <!-- ==================== SERVICES / CATALOG PAGE ==================== -->
+    <section id="servicesPage" class="page">
+      <div class="bg-slate-950 text-white py-20 relative">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1595347271927-9e7943c5b8b9?auto=format&fit=crop&w=1920&q=80')] opacity-30 bg-cover bg-center"></div>
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center relative z-10">
+          <span class="text-brand-400 font-bold text-sm uppercase tracking-[.18em]" data-i18n="catalog.title">எங்கள் பயிற்சிப் பிரிவுகள்</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold mt-3">Core Training Disciplines</h1>
+          <p class="text-slate-300 max-w-2xl mx-auto mt-5 leading-7" data-i18n="catalog.sub">
+            Discover our diverse range of traditional martial arts disciplines, curated for all skill levels.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+        
+        <!-- HARDCODED COMPLETE SERVICES GRID -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          
+          <!-- Item 1 -->
+          <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+            <div class="h-48 overflow-hidden bg-red-50 relative">
+              <img src="Images/Silambam Image.jpeg" alt="Silambam" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                🔥 <span data-i18n="disc.s1.name">சிலம்பம்</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s1.name">சிலம்பம்</h3>
+              <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s1.desc">அனைத்து தற்காப்பு கலைகளின் தாய். அடிப்படை காலடி முறைகளை கற்றுக்கொள்ளுங்கள்.</p>
+              <div class="mt-5 space-y-2 text-sm text-slate-600 font-medium">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s1.f1">அடிப்படை சுழற்சிகள்</span></div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s1.f2">காலடி முறைகள்</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                <button onclick="bookService('silambam')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+            <div class="h-48 overflow-hidden bg-red-50 relative">
+              <img src="Images/Surlval Image.jpeg" alt="Surul Val" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                ⚔️ <span data-i18n="disc.s2.name">சுருள் வாள்</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s2.name">சுருள் வாள்</h3>
+              <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s2.desc">உயர்ந்த கவனம் மற்றும் சுறுசுறுப்பை உருவாக்கும் நெகிழ்வான உலோக பிளேடு பயிற்சி.</p>
+              <div class="mt-5 space-y-2 text-sm text-slate-600 font-medium">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s2.f1">கவனம் மேம்பாடு</span></div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s2.f2">வேகப்பயிற்சி</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                <button onclick="bookService('surul')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+            <div class="h-48 overflow-hidden bg-red-50 relative">
+              <img src="Images/Velkambu Image.jpeg" alt="Vel Kambu" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                🗡️ <span data-i18n="disc.s3.name">வேல் கம்பு & வாள்</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s3.name">வேல் கம்பு & வாள்</h3>
+              <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s3.desc">உடல் வலிமை மற்றும் போர் யுக்திகளை வளர்ப்பதற்கான பாரம்பரிய ஆயுதப் பயிற்சி.</p>
+              <div class="mt-5 space-y-2 text-sm text-slate-600 font-medium">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s3.f1">உடல் வலிமை</span></div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s3.f2">போர் யுக்திகள்</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                <button onclick="bookService('sword')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+            <div class="h-48 overflow-hidden bg-red-50 relative">
+              <img src="Images/Valari Image.jpg" alt="Valari" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                🌀 <span data-i18n="disc.s4.name">வளரி</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s4.name">வளரி</h3>
+              <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s4.desc">நமது தனித்துவமான கலாச்சார பாரம்பரியத்தை பாதுகாக்கும் பழங்கால எறிதல் ஆயுத பயிற்சி.</p>
+              <div class="mt-5 space-y-2 text-sm text-slate-600 font-medium">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s4.f1">இலக்கு பயிற்சி</span></div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s4.f2">பழங்கால ஆயுதம்</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                <button onclick="bookService('valari')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 5 -->
+          <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+            <div class="h-48 overflow-hidden bg-red-50 relative">
+              <img src="Images/Vilvithai Image.jpg" alt="Archery" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                🎯 <span data-i18n="disc.s5.name">வில் வித்தை</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s5.name">வில் வித்தை</h3>
+              <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s5.desc">மனத் தெளிவு, உடல் நிலை மற்றும் ஆழ்ந்த கவனத்தை கூர்மைப்படுத்த வடிவமைக்கப்பட்ட பயிற்சி.</p>
+              <div class="mt-5 space-y-2 text-sm text-slate-600 font-medium">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s5.f1">துல்லியம்</span></div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s5.f2">மன ஒருமைப்பாடு</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                <button onclick="bookService('archery')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 6 -->
+          <article class="service-card bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-card">
+            <div class="h-48 overflow-hidden bg-red-50 relative">
+              <img src="Images/Womens Defence Image.jpg" alt="Defense" class="w-full h-full object-cover">
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow">
+                🛡️ <span data-i18n="disc.s6.name">பெண்களுக்கான தற்காப்பு</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold mt-2" data-i18n="disc.s6.name">பெண்களுக்கான தற்காப்பு</h3>
+              <p class="text-sm text-slate-600 leading-6 mt-3" data-i18n="disc.s6.desc">பாதுகாப்பு மற்றும் நம்பிக்கையை உறுதி செய்வதற்காக பெண் ஆசான்களால் வழிநடத்தப்படும் வகுப்புகள்.</p>
+              <div class="mt-5 space-y-2 text-sm text-slate-600 font-medium">
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s6.f1">பெண் ஆசான்கள்</span></div>
+                <div class="flex items-center gap-2"><svg class="w-4 h-4 check" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l4 4L19 6"/></svg><span data-i18n="disc.s6.f2">நடைமுறை தற்காப்பு</span></div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+                <button onclick="bookService('defense')" class="w-full px-4 py-3 rounded-xl bg-brand-50 text-brand-600 text-sm font-bold hover:bg-brand-600 hover:text-white transition" data-i18n="catalog.bookBtn">வகுப்பில் சேரவும்</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="mt-16 bg-red-50 border border-red-100 rounded-3xl p-8 sm:p-12 text-center">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Ready to start your training?</h2>
+          <p class="text-slate-600 mt-3 max-w-2xl mx-auto leading-7">
+            Join Bodinayakkanur's top-rated martial arts academy. First trial class is free!
+          </p>
+          <button onclick="showPage('contact')" class="mt-7 px-7 py-3.5 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition" data-i18n="hero.cta2">
+            இலவச வகுப்புக்கு பதிவு செய்க
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <section id="aboutPage" class="page">
+      <div class="bg-brand-50 py-20">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+          <span class="text-brand-600 font-bold text-sm uppercase tracking-[.18em]" data-i18n="nav.about">எங்களைப் பற்றி</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold mt-3" data-i18n="brand">விருமன் சிலம்பம்</h1>
+          <p class="max-w-3xl mt-5 text-slate-600 leading-8" data-i18n="about_teaser.quote">
+            "உடல் தகுதி, ஒழுக்கம், நம்பிக்கை மற்றும் கவனம்"
+          </p>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold" data-i18n="about.header">Our Story & Mission</h2>
+            <p class="text-slate-600 leading-8 mt-6" data-i18n="about.p1">
+              விருமன் சிலம்பம் என்பது பாரம்பரிய தமிழர் சிலம்பக் கலையை தொழில்முறை முறையில் கற்றுத்தரும் சிறந்த பயிற்சி மையமாகும். இங்கு குழந்தைகள், மாணவர்கள் மற்றும் பெரியவர்கள் அனைவருக்கும் தற்காப்பு கலை பயிற்சி வழங்கப்படுகிறது.
+            </p>
+            <p class="text-slate-600 leading-8 mt-4" data-i18n="about.p2">
+              உடல் தகுதி, ஒழுக்கம், நம்பிக்கை மற்றும் கவனம் ஆகியவற்றை வளர்க்கும் வகையில் முறையான பயிற்சி வழங்கப்படுகிறது. அனுபவமுள்ள பயிற்சியாளர்களின் வழிகாட்டுதலுடன் ஆரம்ப நிலை முதல் மேம்பட்ட நிலை வரை பயிற்சி அளிக்கப்படுகிறது.
+            </p>
+            <p class="text-slate-600 leading-8 mt-4" data-i18n="about.p3">
+              We believe in preserving the rich cultural heritage of Tamil Nadu while equipping our students with modern physical fitness and self-defense capabilities.
+            </p>
+          </div>
+          <div class="bg-white rounded-3xl border border-slate-100 shadow-soft p-7">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-2xl bg-red-50 p-6 text-center">
+                <div class="text-4xl font-extrabold text-brand-600">10+</div>
+                <h3 class="font-bold mt-2" data-i18n="about.stats.s1">வருட அனுபவம்</h3>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-6 text-center">
+                <div class="text-4xl font-extrabold text-brand-600">500+</div>
+                <h3 class="font-bold mt-2" data-i18n="about.stats.s2">மாணவர்கள்</h3>
+              </div>
+              <div class="rounded-2xl bg-slate-50 p-6 text-center">
+                <div class="text-4xl font-extrabold text-brand-600">3</div>
+                <h3 class="font-bold mt-2" data-i18n="about.stats.s3">ஹாட்ரிக் வெற்றிகள்</h3>
+              </div>
+              <div class="rounded-2xl bg-red-50 p-6 text-center">
+                <div class="text-4xl font-extrabold text-brand-600">100%</div>
+                <h3 class="font-bold mt-2" data-i18n="about.stats.s4">அர்ப்பணிப்பு</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRICING / BATCHES PAGE ==================== -->
+    <section id="pricingPage" class="page">
+      <div class="bg-slate-950 text-white py-20 relative">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589117621437-02b4d96a77d5?auto=format&fit=crop&w=1920&q=80')] opacity-30 bg-cover bg-center"></div>
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center relative z-10">
+          <span class="text-brand-400 font-bold text-sm uppercase tracking-[.18em]" data-i18n="nav.pricing">கட்டணம்</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold mt-3">Training Batches & Pricing</h1>
+          <p class="text-slate-300 max-w-2xl mx-auto mt-5">Affordable traditional training for everyone. Find the right batch for you.</p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div class="pricing-card bg-white rounded-3xl border border-slate-200 p-7 shadow-card">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-600">Batch 01</div>
+            <h2 class="text-2xl font-extrabold mt-3">Kids & Students</h2>
+            <p class="text-sm text-slate-500 mt-2">Foundational training for discipline and focus.</p>
+            <div class="mt-7 pb-6 border-b border-slate-100">
+              <div class="text-sm text-slate-500">Contact for Monthly Fee</div>
+            </div>
+            <div class="mt-6 space-y-4 text-sm font-medium">
+              <div class="flex items-center gap-3"><span class="check">✔</span> Daily Sessions</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Basics of Silambam</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Physical Fitness</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Competition Prep</div>
+            </div>
+            <button onclick="selectPackage('Kids & Students')" class="w-full mt-8 py-3 rounded-xl border border-brand-600 text-brand-600 font-bold hover:bg-brand-600 hover:text-white transition">Enquire Now</button>
+          </div>
+
+          <div class="pricing-card featured-pricing bg-white rounded-3xl p-7 shadow-soft relative">
+            <div class="absolute top-0 right-6 -translate-y-1/2 bg-brand-600 text-white text-xs font-bold px-4 py-2 rounded-full">POPULAR</div>
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-600">Batch 02</div>
+            <h2 class="text-2xl font-extrabold mt-3">Adults & Advanced</h2>
+            <p class="text-sm text-slate-500 mt-2">Rigorous weapon training and real-world self-defense.</p>
+            <div class="mt-7 pb-6 border-b border-slate-100">
+              <div class="text-sm text-slate-500">Contact for Monthly Fee</div>
+            </div>
+            <div class="mt-6 space-y-4 text-sm font-medium">
+              <div class="flex items-center gap-3"><span class="check">✔</span> Advanced Silambam</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Surul Val & Vel Kambu</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Core Strengthening</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Strategic Self-Defense</div>
+            </div>
+            <button onclick="selectPackage('Adults & Advanced')" class="w-full mt-8 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition">Enquire Now</button>
+          </div>
+
+          <div class="pricing-card bg-white rounded-3xl border border-slate-200 p-7 shadow-card">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-600">Batch 03</div>
+            <h2 class="text-2xl font-extrabold mt-3">Women's Special</h2>
+            <p class="text-sm text-slate-500 mt-2">Dedicated safety and empowerment training.</p>
+            <div class="mt-7 pb-6 border-b border-slate-100">
+              <div class="text-sm text-slate-500">Contact for Monthly Fee</div>
+            </div>
+            <div class="mt-6 space-y-4 text-sm font-medium">
+              <div class="flex items-center gap-3"><span class="check">✔</span> Female Instructors</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Practical Self Defense</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Confidence Building</div>
+              <div class="flex items-center gap-3"><span class="check">✔</span> Flexible Timings</div>
+            </div>
+            <button onclick="selectPackage('Women\\'s Special')" class="w-full mt-8 py-3 rounded-xl border border-brand-600 text-brand-600 font-bold hover:bg-brand-600 hover:text-white transition">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <section id="contactPage" class="page">
+      <div class="bg-brand-50 py-20">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+          <span class="text-brand-600 font-bold text-sm uppercase tracking-[.18em]" data-i18n="nav.contact">தொடர்பு</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold mt-3" data-i18n="contact.title">தொடர்பு கொள்ள</h1>
+          <p class="max-w-2xl mt-5 text-slate-600 leading-8" data-i18n="contact.sub">Get in touch with us to start your martial arts journey.</p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+        <div class="grid lg:grid-cols-5 gap-10">
+          <div class="lg:col-span-2">
+            <h2 class="text-2xl font-extrabold" data-i18n="contact.info.title">முகவரி & தகவல்</h2>
+            <p class="text-slate-600 leading-7 mt-3">Fill in the details and our team will receive your enquiry directly through WhatsApp.</p>
+            <div class="space-y-5 mt-8">
+              <a href="tel:+919842396116" class="flex items-start gap-4 group">
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-brand-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2l2 5-2 1.5a16 16 0 007.5 7.5L16 15l5 2v2a2 2 0 01-2 2C9.716 21 3 14.284 3 6V5z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400 font-semibold uppercase" data-i18n="contact.info.phoneLabel">Phone / WhatsApp</div>
+                  <div class="font-bold mt-1 group-hover:text-brand-600">+91 98423 96116</div>
+                </div>
+              </a>
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-brand-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400 font-semibold uppercase" data-i18n="contact.info.timeLabel">Class Timings</div>
+                  <div class="font-bold mt-1" data-i18n="contact.info.timeText">Opens daily at 5:00 PM</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-brand-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21s7-5.2 7-12a7 7 0 10-14 0c0 6.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-400 font-semibold uppercase" data-i18n="contact.info.addressLabel">Location</div>
+                  <div class="font-bold mt-1" data-i18n="contact.info.addressText">Aranmanai Back side, Aranmanai Street, <br>Ammankulam, Bodinayakanur, <br>Tamil Nadu 625513</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3">
+            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="bg-white border border-slate-100 shadow-soft rounded-3xl p-7 sm:p-10">
+              <h3 class="text-2xl font-bold text-slate-900 mb-6" data-i18n="form.title">விசாரணை படிவம்</h3>
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="form.nameLabel">முழு பெயர் (Full Name)</label>
+                  <input id="fullName" type="text" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-4 focus:ring-red-100 outline-none transition" data-i18n-placeholder="form.namePlace">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="form.phoneLabel">தொலைபேசி எண் (Phone Number)</label>
+                  <input id="phone" type="tel" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-4 focus:ring-red-100 outline-none transition" placeholder="+91">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="form.artLabel">நீங்கள் கற்க விரும்பும் கலை (Interested Art)</label>
+                  <select id="interestedArt" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-4 focus:ring-red-100 outline-none transition bg-white">
+                    <option value="" disabled selected data-i18n="form.artSelect">ஒரு பிரிவை தேர்ந்தெடுக்கவும்...</option>
+                    <option value="silambam" data-i18n="disc.s1.name">சிலம்பம்</option>
+                    <option value="surul" data-i18n="disc.s2.name">சுருள் வாள்</option>
+                    <option value="sword" data-i18n="disc.s3.name">வேல் கம்பு & வாள்</option>
+                    <option value="valari" data-i18n="disc.s4.name">வளரி</option>
+                    <option value="archery" data-i18n="disc.s5.name">வில் வித்தை</option>
+                    <option value="defense" data-i18n="disc.s6.name">பெண்களுக்கான தற்காப்பு</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-5">
+                <label class="block text-sm font-semibold text-slate-700 mb-2" data-i18n="form.msgLabel">செய்தி / குறிப்பு (Message)</label>
+                <textarea id="message" rows="4" class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-4 focus:ring-red-100 outline-none transition resize-none" data-i18n-placeholder="form.msgPlace"></textarea>
+              </div>
+              <button type="submit" class="w-full mt-6 py-4 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white font-bold transition shadow-lg flex items-center justify-center gap-2">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.573-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564c.173.087.289.129.332.202.043.073.043.423-.101.827z"></path><path d="M12.031 2C6.496 2 2 6.496 2 12.032c0 1.77.463 3.498 1.341 5.01L2 22l5.109-1.336A9.972 9.972 0 0012.031 22c5.533 0 10.03-4.498 10.03-10.032S17.564 2 12.031 2zm0 18.36c-1.503 0-2.973-.404-4.26-1.168l-.306-.182-3.167.828.841-3.084-.2-.317A8.327 8.327 0 013.63 12.032c0-4.636 3.774-8.411 8.401-8.411 4.628 0 8.402 3.775 8.402 8.411s-3.774 8.411-8.402 8.411z"></path></svg>
+                <span data-i18n="form.submitBtn">WhatsApp-ல் இணைக்கவும்</span>
+              </button>
+              <p class="text-xs text-slate-400 text-center mt-4" data-i18n="form.disclaimer">Your enquiry will open securely in WhatsApp.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-white">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <button onclick="showPage('home')" class="flex items-center gap-3 text-left">
+            <span class="font-heading font-bold text-2xl text-brand-500 tracking-wide" data-i18n="brand">விருமன் சிலம்பம்</span>
+          </button>
+          <p class="text-slate-400 leading-7 text-sm mt-5 max-w-md" data-i18n="footer.desc">
+            பாரம்பரிய தமிழர் சிலம்பக் கலையை கற்றுத்தரும் சிறந்த பயிற்சி மையம்.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold text-sm uppercase tracking-wider" data-i18n="footer.links">Quick Links</h3>
+          <div class="space-y-3 mt-5">
+            <button onclick="showPage('home')" class="block text-sm text-slate-400 hover:text-white transition" data-i18n="nav.home">முகப்பு</button>
+            <button onclick="showPage('services')" class="block text-sm text-slate-400 hover:text-white transition" data-i18n="nav.classes">பிரிவுகள்</button>
+            <button onclick="showPage('about')" class="block text-sm text-slate-400 hover:text-white transition" data-i18n="nav.about">எங்களைப் பற்றி</button>
+            <button onclick="showPage('pricing')" class="block text-sm text-slate-400 hover:text-white transition" data-i18n="nav.pricing">கட்டணம்</button>
+            <button onclick="showPage('contact')" class="block text-sm text-slate-400 hover:text-white transition" data-i18n="nav.contact">தொடர்பு</button>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <h3 class="font-bold text-sm uppercase tracking-wider" data-i18n="footer.contact">Contact</h3>
+          <div class="space-y-4 mt-5 text-sm text-slate-400">
+            <a href="tel:+919842396116" class="block font-bold text-brand-400 hover:text-white transition">+91 98423 96116</a>
+            <span class="block leading-relaxed" data-i18n="contact.info.addressText">Aranmanai Back side, Aranmanai Street, <br>Ammankulam, Bodinayakanur, <br>Tamil Nadu 625513</span>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 mt-12 pt-7 text-center">
+        <p class="text-xs text-slate-500" data-i18n="footer.copy">&copy; 2024 Viruman Silambam School. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919842396116" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="fixed right-5 bottom-5 z-40 w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-xl hover:scale-105 transition">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 3.5A11.9 11.9 0 0012 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 005.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.9 0-3.1-1.2-6.1-3.4-8.3zM12.1 21.7h-.1c-1.8 0-3.5-.5-5-1.3l-.4-.2-3.8 1 1-3.7-.2-.4a9.7 9.7 0 01-1.5-5.2C2.1 6.6 6.6 2.2 12 2.2c2.6 0 5 1 6.9 2.9a9.7 9.7 0 012.8 6.9c0 5.4-4.3 9.7-9.6 9.7zm5.3-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.3-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.7.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.2 3.2c.2.2 2.2 3.4 5.3 4.8.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <!-- JS ENGINE (No renderServices / catalogData) -->
+  <script>
+    const WHATSAPP_NUMBER = '919842396116';
+
+    const translations = {
+      ta: {
+        brand: "விருமன் சிலம்பம்",
+        nav: { home: "முகப்பு", classes: "பிரிவுகள்", about: "எங்களைப் பற்றி", pricing: "கட்டணம்", contact: "தொடர்பு", cta: "இலவச வகுப்புக்கு பதிவு செய்க" },
+        hero: {
+          badge: "விருமன் சிலம்பம் உங்களை வரவேற்கிறது",
+          title: "பாரம்பரிய தமிழர் சிலம்பக் கலையை கற்றுத்தரும் <span class='gradient-text'>சிறந்த பயிற்சி மையம்</span>",
+          subtitle: "உடல் மற்றும் மன வலிமையை மேம்படுத்தும் பழங்கால தற்காப்பு கலை. போடிநாயக்கனூரின் சிறந்த தற்காப்பு கலை அகாடமியில் இணையுங்கள்.",
+          cta1: "இப்போதே அழைக்கவும்", cta2: "இலவச வகுப்புக்கு பதிவு செய்க"
+        },
+        stats: { s1: "வருட அனுபவம்", s2: "மாணவர்கள்", s3: "ஹாட்ரிக் வெற்றிகள்", s4: "அர்ப்பணிப்பு" },
+        trust: {
+          rating: { title: "5.0 / 5 நட்சத்திர மதிப்பீடு" }, certified: { title: "சான்றிதழ் பெற்ற ஆசான்கள்" },
+          female: { title: "பெண் பயிற்சியாளர்கள்" }, ages: { title: "அனைவருக்கும் அனுமதி" }
+        },
+        about_teaser: {
+          tag: "எங்களைப் பற்றி சுருக்கமாக", quote: "\"உடல் தகுதி, ஒழுக்கம், <span class='gradient-text'>நம்பிக்கை மற்றும் கவனம்\"</span>",
+          desc: "விருமன் சிலம்பம் என்பது பாரம்பரிய தமிழர் சிலம்பக் கலையை தொழில்முறை முறையில் கற்றுத்தரும் சிறந்த பயிற்சி மையமாகும்.",
+          btn: "முழு கதையையும் படிக்க"
+        },
+        benefits: {
+          title: "ஏன் எங்களைத் தேர்ந்தெடுக்க வேண்டும்?", sub: "விருமன் சிலம்பத்தில் இணைவதன் நன்மைகள்",
+          b1: { title: "உடல் ஆரோக்கியம்", desc: "இருதய ஆரோக்கியம், நெகிழ்வுத்தன்மை, தசை நாண்கள் மற்றும் ஒட்டுமொத்த உடல் வலிமையை மேம்படுத்துகிறது." },
+          b2: { title: "மன ஒழுக்கம்", desc: "கவனத்தை மேம்படுத்துகிறது, பள்ளி மற்றும் கல்லூரி மாணவர்கள் கல்வியில் சிறந்து விளங்க உதவுகிறது." },
+          b3: { title: "தற்காப்பு திறன்", desc: "எதிர்பாராத அச்சுறுத்தல்களை நம்பிக்கையுடன் கையாளும் நிஜ உலக பாதுகாப்பு திறன்களை உருவாக்குகிறது." },
+          b4: { title: "கலாச்சார பாரம்பரியம்", desc: "இளைய தலைமுறையினரை பாரம்பரிய தமிழ் வேர்கள் மற்றும் பழங்கால ஒழுக்கத்துடன் ஆழமாக இணைக்கிறது." }
+        },
+        achievements: {
+          title: "பெருமைமிகு சாதனைகள்", quote: "“வரலாற்று சிறப்புமிக்க ஹாட்ரிக் வெற்றி! போடி விருமன் சிலம்பம் பயிற்சி பள்ளி மாணவர்களின் தொடர் வெற்றிகள்...”", btn: "புகைப்படங்களை காண"
+        },
+        testimonials: {
+          title: "பெற்றோர்கள் மற்றும் மாணவர்களின் கருத்துகள்",
+          t1: { quote: "\"என் மகனை இங்கு சிலம்பம் கற்க சேர்த்ததிலிருந்து அவனிடம் நல்ல ஒழுக்கமும் கவனமும் அதிகரித்துள்ளது. சிறந்த பயிற்சியாளர்கள்!\"", author: "பெற்றோர்" },
+          t2: { quote: "\"பெண்களுக்கு தனியாக பெண் பயிற்சியாளர் இருப்பது மிகவும் பாதுகாப்பாகவும் நம்பிக்கையாகவும் உள்ளது. நன்றி விருமன் சிலம்பம்!\"", author: "மாணவி" }
+        },
+        catalog: {
+          title: "எங்கள் பயிற்சிப் பிரிவுகள்", sub: "அனைத்து திறன் நிலைகளுக்கும் ஏற்ப வடிவமைக்கப்பட்ட எங்களின் பாரம்பரிய தற்காப்பு கலைகளை கண்டறியுங்கள்.",
+          bookBtn: "இந்த வகுப்பில் சேரவும்", viewAll: "அனைத்து பிரிவுகளையும் காண"
+        },
+        disc: {
+          s1: { name: "சிலம்பம்", desc: "அனைத்து தற்காப்பு கலைகளின் தாய். அடிப்படை காலடி முறைகளை கற்றுக்கொள்ளுங்கள்.", f1: "அடிப்படை சுழற்சிகள்", f2: "காலடி முறைகள்" },
+          s2: { name: "சுருள் வாள்", desc: "உயர்ந்த கவனம் மற்றும் சுறுசுறுப்பை உருவாக்கும் நெகிழ்வான உலோக பிளேடு பயிற்சி.", f1: "கவனம் மேம்பாடு", f2: "வேகப்பயிற்சி" },
+          s3: { name: "வேல் கம்பு & வாள்", desc: "உடல் வலிமை மற்றும் போர் யுக்திகளை வளர்ப்பதற்கான பாரம்பரிய ஆயுதப் பயிற்சி.", f1: "உடல் வலிமை", f2: "போர் யுக்திகள்" },
+          s4: { name: "வளரி", desc: "நமது தனித்துவமான கலாச்சார பாரம்பரியத்தை பாதுகாக்கும் பழங்கால எறிதல் ஆயுத பயிற்சி.", f1: "இலக்கு பயிற்சி", f2: "பழங்கால ஆயுதம்" },
+          s5: { name: "வில் வித்தை", desc: "மனத் தெளிவு, உடல் நிலை மற்றும் ஆழ்ந்த கவனத்தை கூர்மைப்படுத்த வடிவமைக்கப்பட்ட பயிற்சி.", f1: "துல்லியம்", f2: "மன ஒருமைப்பாடு" },
+          s6: { name: "பெண்களுக்கான தற்காப்பு", desc: "பாதுகாப்பு மற்றும் நம்பிக்கையை உறுதி செய்வதற்காக பெண் ஆசான்களால் வழிநடத்தப்படும் வகுப்புகள்.", f1: "பெண் ஆசான்கள்", f2: "நடைமுறை தற்காப்பு" }
+        },
+        about: {
+          header: "எங்கள் நோக்கம்",
+          p1: "விருமன் சிலம்பம் என்பது பாரம்பரிய தமிழர் சிலம்பக் கலையை தொழில்முறை முறையில் கற்றுத்தரும் சிறந்த பயிற்சி மையமாகும்.",
+          p2: "உடல் தகுதி, ஒழுக்கம், நம்பிக்கை மற்றும் கவனம் ஆகியவற்றை வளர்க்கும் வகையில் முறையான பயிற்சி வழங்கப்படுகிறது.",
+          p3: "நவீன உடல் தகுதி மற்றும் தற்காப்பு திறன்களுடன் மாணவர்களை சித்தப்படுத்துவதோடு, தமிழ்நாட்டின் வளமான கலாச்சார பாரம்பரியத்தை பாதுகாப்பதிலும் நாங்கள் நம்பிக்கை கொண்டுள்ளோம்.",
+          stats: { s1: "வருட அனுபவம்", s2: "பயிற்சி பெற்ற மாணவர்கள்", s3: "ஹாட்ரிக் வெற்றிகள்", s4: "அர்ப்பணிப்பு" }
+        },
+        contact: {
+          title: "தொடர்பு கொள்ள", sub: "உங்கள் தற்காப்பு கலை பயணத்தை தொடங்க எங்களை தொடர்பு கொள்ளுங்கள்.",
+          info: { title: "முகவரி & தகவல்", addressLabel: "முகவரி", addressText: "அரண்மனை பின்புறம், அரண்மனை தெரு, <br>அம்மன்குளம், போடிநாயக்கனூர், <br>தமிழ்நாடு 625513", phoneLabel: "தொலைபேசி / வாட்ஸ்அப்", timeLabel: "வகுப்பு நேரங்கள்", timeText: "தினமும் மாலை 5:00 மணிக்கு தொடங்கும்" }
+        },
+        form: {
+          title: "விசாரணை படிவம்", nameLabel: "முழு பெயர்", namePlace: "உங்கள் பெயரை உள்ளிடவும்", phoneLabel: "தொலைபேசி எண்",
+          artLabel: "நீங்கள் கற்க விரும்பும் கலை", artSelect: "ஒரு பிரிவை தேர்ந்தெடுக்கவும்...", msgLabel: "செய்தி / குறிப்பு", msgPlace: "உங்களுக்கு ஏதேனும் குறிப்பிட்ட கேள்விகள் உள்ளதா?",
+          submitBtn: "WhatsApp-ல் இணைக்கவும்", disclaimer: "உங்கள் விவரங்களுடன் வாட்ஸ்அப் பாதுகாப்பாக திறக்கப்படும்."
+        },
+        footer: { desc: "பாரம்பரிய தமிழர் சிலம்பக் கலையை கற்றுத்தரும் சிறந்த பயிற்சி மையம்.", links: "முக்கிய இணைப்புகள்", contact: "தொடர்பு", copy: "&copy; 2024 விருமன் சிலம்பம் பள்ளி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை." },
+        whatsappMsg: { greeting: "வணக்கம்! என் பெயர்", phone: "தொலைபேசி", interested: "நான் இந்த வகுப்பில் சேர விரும்புகிறேன்:", msg: "செய்தி" }
+      },
+      en: {
+        brand: "Viruman Silambam",
+        nav: { home: "Home", classes: "Classes", about: "About", pricing: "Batches", contact: "Contact", cta: "Book Free Trial" },
+        hero: {
+          badge: "5.0 Rated | Hat-Trick Wins!",
+          title: "Premier Training Center for Traditional <span class='gradient-text'>Tamil Silambam</span>",
+          subtitle: "Empowering mind and body through ancient Tamil martial arts. Join Bodinayakkanur's top-rated academy.",
+          cta1: "Call Now", cta2: "Book Free Trial"
+        },
+        stats: { s1: "Years Exp.", s2: "Students", s3: "Hat-Trick Wins", s4: "Dedication" },
+        trust: {
+          rating: { title: "5.0 / 5 Star Rating" }, certified: { title: "Certified Masters" },
+          female: { title: "Female Trainers" }, ages: { title: "All Ages Welcome" }
+        },
+        about_teaser: {
+          tag: "About Us", quote: "\"Fitness, Discipline, <span class='gradient-text'>Confidence and Focus\"</span>",
+          desc: "Viruman Silambam is a premier academy teaching traditional Tamil martial arts professionally. Self-defense training is provided for all.",
+          btn: "Read Full Story"
+        },
+        benefits: {
+          title: "Why Choose Us?", sub: "Benefits of Joining",
+          b1: { title: "Physical Health", desc: "Improves cardiovascular health, flexibility, muscle tone, and overall core strength." },
+          b2: { title: "Mental Discipline", desc: "Enhances concentration levels, making it ideal for school and college students." },
+          b3: { title: "Self-Defense", desc: "Equips individuals with real-world protective skills to handle unexpected threats." },
+          b4: { title: "Cultural Heritage", desc: "Connects the younger generation deeply to traditional Tamil roots." }
+        },
+        achievements: {
+          title: "Our Proud Moments", quote: "“Historic Hat-Trick Win! Continuous victories by students of Viruman Silambam School...”", btn: "View Full Gallery"
+        },
+        testimonials: {
+          title: "Parent & Student Reviews",
+          t1: { quote: "\"Since enrolling my son here, his discipline and focus have increased tremendously. Excellent trainers!\"", author: "Parent Review" },
+          t2: { quote: "\"Having a dedicated female trainer makes it very safe and confidence-inspiring. Thanks Viruman Silambam!\"", author: "Student Review" }
+        },
+        catalog: {
+          title: "Training Disciplines", sub: "Discover our diverse range of traditional martial arts disciplines, curated for all skill levels.",
+          bookBtn: "Book This Class", viewAll: "View All Classes"
+        },
+        disc: {
+          s1: { name: "Silambam", desc: "The mother of all martial arts. Master foundational footwork, striking, and defensive blocks.", f1: "Basic Rotations", f2: "Footwork Patterns" },
+          s2: { name: "Surul Val", desc: "High-skill flexible metal blade training that builds elite focus, coordination, and agility.", f1: "Focus Enhancement", f2: "Speed Drill" },
+          s3: { name: "Vel Kambu & Sword", desc: "Traditional weaponry training designed to build raw strength, strategic positioning, and endurance.", f1: "Physical Strength", f2: "Combat Strategy" },
+          s4: { name: "Valari", desc: "Rare training in the ancient traditional Tamil throwing weapon, preserving our unique heritage.", f1: "Target Practice", f2: "Ancient Weapon" },
+          s5: { name: "Archery", desc: "Precision target practice designed to sharpen mental clarity, posture, and deep focus.", f1: "Precision", f2: "Mental Focus" },
+          s6: { name: "Women's Defense", desc: "Dedicated sessions led by expert female instructors to ensure comfort, safety, and empowerment.", f1: "Female Instructors", f2: "Practical Defense" }
+        },
+        about: {
+          header: "Our Story & Mission",
+          p1: "Viruman Silambam is the best training center that teaches traditional Tamil Silambam art in a professional manner.",
+          p2: "Systematic training is provided to develop physical fitness, discipline, confidence, and focus.",
+          p3: "We believe in preserving the rich cultural heritage of Tamil Nadu while equipping our students with modern physical fitness and self-defense capabilities.",
+          stats: { s1: "Years Experience", s2: "Students Trained", s3: "Hat-Trick Wins", s4: "Dedication" }
+        },
+        contact: {
+          title: "Get In Touch", sub: "Contact us to start your martial arts journey.",
+          info: { title: "Address & Info", addressLabel: "Location", addressText: "Aranmanai Back side, Aranmanai Street, <br>Ammankulam, Bodinayakanur, <br>Tamil Nadu 625513", phoneLabel: "Phone / WhatsApp", timeLabel: "Class Timings", timeText: "Opens daily at 5:00 PM" }
+        },
+        form: {
+          title: "Quick Inquiry", nameLabel: "Full Name", namePlace: "Enter your name", phoneLabel: "Phone Number",
+          artLabel: "Interested Art", artSelect: "Select an option...", msgLabel: "Message / Note", msgPlace: "Any specific requirements...",
+          submitBtn: "Submit via WhatsApp", disclaimer: "Your enquiry will open securely in WhatsApp."
+        },
+        footer: { desc: "Premier training center for traditional Tamil Silambam arts.", links: "Quick Links", contact: "Contact", copy: "&copy; 2024 Viruman Silambam School. All rights reserved." },
+        whatsappMsg: { greeting: "Hello! My name is", phone: "Phone", interested: "I am interested in joining classes for:", msg: "Message" }
+      }
+    };
+
+    let currentLang = 'ta';
+
+    function getNestedTranslation(obj, path) {
+      return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ta' ? 'en' : 'ta';
+      updateLanguageUI();
+    }
+
+    function updateLanguageUI() {
+      document.documentElement.lang = currentLang;
+      document.getElementById('lang-text-desktop').innerText = currentLang === 'ta' ? 'English' : 'தமிழ்';
+      document.getElementById('lang-text-mobile').innerText = currentLang === 'ta' ? 'EN' : 'TA';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translatedText = getNestedTranslation(translations[currentLang], key);
+        if (translatedText) el.innerHTML = translatedText;
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        const translatedText = getNestedTranslation(translations[currentLang], key);
+        if (translatedText) el.placeholder = translatedText;
+      });
+    }
+
+    function showPage(pageName) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      const target = document.getElementById(pageName + 'Page');
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.page === pageName);
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.page === pageName);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (pageName === 'home') startCounters();
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    function bookService(categoryKey) {
+      showPage('contact');
+      document.getElementById('interestedArt').value = categoryKey;
+      window.scrollTo(0, document.getElementById('contactForm').offsetTop - 100);
+    }
+
+    function selectPackage(packageName) {
+      showPage('contact');
+      document.getElementById('message').value = currentLang === 'ta' 
+        ? `நான் '${packageName}' பேட்ச் பற்றிய விவரங்களை அறிய விரும்புகிறேன்.`
+        : `I am interested in the '${packageName}' batch. Please share details.`;
+      window.scrollTo(0, document.getElementById('contactForm').offsetTop - 100);
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      
+      const selectElement = document.getElementById('interestedArt');
+      const artKey = selectElement.value;
+      const artName = selectElement.options[selectElement.selectedIndex].text; // Directly grab translated text from option
+
+      const msg = document.getElementById('message').value.trim();
+
+      if(!name || !phone || !artKey) return;
+
+      const t = translations[currentLang].whatsappMsg;
+      let text = `${t.greeting} *${name}*.\n${t.phone}: ${phone}\n${t.interested} *${artName}*\n`;
+      if(msg) text += `\n${t.msg}: ${msg}`;
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function startCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        if (counter.dataset.started === 'true') return;
+        counter.dataset.started = 'true';
+        
+        const target = Number(counter.dataset.target);
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(target / 40));
+
+        const update = () => {
+          current += increment;
+          if (current >= target) {
+            counter.textContent = target + (target > 5 ? '+' : '');
+            return;
+          }
+          counter.textContent = current;
+          requestAnimationFrame(update);
+        };
+        update();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateLanguageUI();
+      showPage('home');
+    });
+  </script>
+</body>
+</html>
